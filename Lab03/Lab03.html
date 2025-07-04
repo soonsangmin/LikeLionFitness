@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../css/contact-us.css" />
+  </head>
+
+  <body>
+    <header>
+      <img src="../img/logo.png" alt="logo" width="100%" />
+
+      <nav>
+        <a href="./home.html">Home</a>
+        <a href="./about-us.html">About Us</a>
+        <a href="./classess.html">Classes</a>
+        <a href="./nutrition.html">Nutrition</a>
+        <a href="./contact-us.html">Contact Us</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>
+        Ready to get started? Contact us today.<br />
+        Complete the form below to begin your free trial.
+      </h1>
+
+      <form>
+        <div class="information">
+          <div class="form-row">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="first_name" required />
+          </div>
+
+          <div class="form-row">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="last_name" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+        </div>
+
+        <div class="check">
+          <p>I would like information about:</p>
+          <div class="form">
+            <label
+              ><input type="checkbox" name="info" value="group" /> Group
+              Fitness</label
+            >
+          </div>
+
+          <div class="form">
+            <label
+              ><input type="checkbox" name="info" value="personal" /> Personal
+              Training</label
+            >
+          </div>
+
+          <div class="form">
+            <label
+              ><input type="checkbox" name="info" value="nutrition" />
+              Nutrition</label
+            >
+          </div>
+        </div>
+
+        <div class="select">
+          <div class="form-row">
+            <label for="referral">Referral Source:</label>
+
+            <select id="referral" name="referral">
+              <option value="advertisement">Advertisement</option>
+              <option value="friend">Friend</option>
+              <option value="social">Social Media</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="question">Questions?</label><br />
+            <textarea
+              id="question"
+              name="question"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset Form</button>
+          </div>
+        </div>
+      </form>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const form = document.querySelector("form");
+          const email = document.getElementById("email");
+          const phone = document.getElementById("phone");
+          const question = document.getElementById("question");
+
+          form.addEventListener("submit", function (event) {
+            // Check for email format
+            if (!validateEmail(email.value)) {
+              alert("Please enter a valid email address.");
+              email.focus();
+              event.preventDefault();
+              return;
+            }
+
+            // Check for phone format (digits only, 9 to 11 digits)
+            if (!validatePhone(phone.value)) {
+              alert("Please enter a valid phone number (9 to 11 digits).");
+              phone.focus();
+              event.preventDefault();
+              return;
+            }
+
+            // Optional: check that the question field is filled in
+            if (question.value.trim() === "") {
+              alert("Please enter a question or message.");
+              question.focus();
+              event.preventDefault();
+              return;
+            }
+
+            alert("Form submitted successfully!");
+          });
+
+          function validateEmail(email) {
+            // Simple email validation pattern
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(email);
+          }
+
+          function validatePhone(phone) {
+            // Only allow digits and 9-11 characters long
+            const pattern = /^\d{9,11}$/;
+            return pattern.test(phone);
+          }
+        });
+      </script>
+
+      <div class="contract">
+        <p>
+          We are located at:<br />COBI TOWER 2, 2-4 Street 8, Tan Phu
+          <br />District 7, Ho Chi Minh City, Vietnam
+        </p>
+
+        <p>Phone Number:</p>
+        <a href="tel:+84867133779">0867133779</a>
+
+        <p>Email:</p>
+        <a href="mailto:likelion.vn@likelion.net">likelion.vn@likelion.net</a>
+      </div>
+    </main>
+
+    <footer>
+      Copyright &copy; 2025. All Rights Reserved.
+      <br />
+      <a href="mailto:likelion.vn@likelion.net">likelion.vn@likelion.net</a>
+    </footer>
+  </body>
+</html>
